@@ -7,21 +7,24 @@ import SEO from "../components/seo"
 
 export const query = graphql`
   query {
-    adjectiveQuery: allVocabWordsJson(filter: { type: { eq: "adj." } }) {
+    adjectiveQuery: allVocabWordsJson(
+      filter: { type: { eq: "adj." } }
+      limit: 5
+    ) {
       edges {
         node {
           ...TestFragment
         }
       }
     }
-    verbQuery: allVocabWordsJson(filter: { type: { eq: "v." } }) {
+    verbQuery: allVocabWordsJson(filter: { type: { eq: "v." } }, limit: 5) {
       edges {
         node {
           ...TestFragment
         }
       }
     }
-    nounQuery: allVocabWordsJson(filter: { type: { eq: "n." } }) {
+    nounQuery: allVocabWordsJson(filter: { type: { eq: "n." } }, limit: 5) {
       edges {
         node {
           id
