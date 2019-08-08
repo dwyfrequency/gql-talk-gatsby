@@ -17,10 +17,7 @@ export const query = graphql`
     verbQuery: allVocabWordsJson(filter: { type: { eq: "v." } }) {
       edges {
         node {
-          id
-          word
-          definition
-          type
+          ...TestFragment
         }
       }
     }
