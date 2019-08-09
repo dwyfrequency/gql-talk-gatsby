@@ -41,3 +41,32 @@ fragment Testfragment on VocabWordsJson {
   type
 }
 ```
+
+```
+query($tf: Boolean! = true) {
+  gatsbyRocks: allVocabWordsJson(limit: 2, filter: { type: { ne: "v." } }) {
+    edges {
+      node {
+        id
+        word
+        type
+        definition @include(if: $tf)
+        #     directives, tell us when to include value
+      }
+    }
+  }
+}
+
+```
+
+```
+query {
+      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+```
